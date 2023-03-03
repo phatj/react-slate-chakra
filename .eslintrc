@@ -14,9 +14,12 @@
     "plugin:prettier/recommended"
   ],
   "rules": {
-    "@typescript-eslint/ban-ts-comment": [1, {
-      "ts-ignore": "allow-with-description"
-    }],
+    "@typescript-eslint/ban-ts-comment": [
+      1,
+      {
+        "ts-ignore": "allow-with-description"
+      }
+    ],
     "@typescript-eslint/explicit-function-return-type": "off",
     "@typescript-eslint/explicit-module-boundary-types": "off",
     "@typescript-eslint/interface-name-prefix": "off",
@@ -27,9 +30,13 @@
     "no-useless-escape": "off",
     "object-curly-spacing": ["warn", "always"],
     "prettier/prettier": "warn",
-    "quotes": ["warn", "single", {
-      "avoidEscape": true
-    }],
+    "quotes": [
+      "warn",
+      "single",
+      {
+        "avoidEscape": true
+      }
+    ],
     "require-atomic-updates": "off",
     "semi": ["warn", "always"]
   }

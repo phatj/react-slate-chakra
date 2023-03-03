@@ -1,4 +1,3 @@
-// @ts-nocheck
 import {
   FaAlignCenter,
   FaAlignJustify,
@@ -13,9 +12,8 @@ import {
   FaUnderline,
 } from 'react-icons/fa';
 import { TbSquareNumber1, TbSquareNumber2 } from 'react-icons/tb';
-import { Icon as ChakraIcon } from '@chakra-ui/react';
 
-const iconMap = {
+export const IconMap = {
   format_bold: FaBold,
   format_italic: FaItalic,
   format_underlined: FaUnderline,
@@ -31,10 +29,5 @@ const iconMap = {
   format_align_justify: FaAlignJustify,
 };
 
-type Props = {
-  children: string;
-};
-
-export const Icon: FC<Props> = ({ children: key }) => {
-  return <ChakraIcon as={iconMap[key]} />;
-};
+export type IconMap = typeof IconMap;
+export type IconKeys = keyof IconMap;
