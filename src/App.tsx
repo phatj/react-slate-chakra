@@ -1,11 +1,12 @@
+import { Container } from '@chakra-ui/react';
 import { FC } from 'react';
 import { RichTextEditor } from './Editors/RichTextEditor';
 
 const App: FC = () => {
   return (
-    <div className="App">
+    <Container maxW="container.xl" className="App">
       <RichTextEditor />
-    </div>
+    </Container>
   );
 };
 
