@@ -67,7 +67,7 @@ const toggleBlock = (editor: BaseEditor, format: string) => {
   const isActive = isBlockActive(
     editor,
     format,
-    TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type'
+    TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type',
   );
   const isList = LIST_TYPES.includes(format);
 
@@ -121,7 +121,7 @@ const isBlockActive = (editor, format, blockType = 'type') => {
         !Editor.isEditor(n) &&
         SlateElement.isElement(n) &&
         n[blockType] === format,
-    })
+    }),
   );
 
   return !!match;
@@ -207,7 +207,7 @@ const BlockButton = ({ format, icon }) => {
       isActive={isBlockActive(
         editor,
         format,
-        TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type'
+        TEXT_ALIGN_TYPES.includes(format) ? 'align' : 'type',
       )}
       onMouseDown={(event) => {
         event.preventDefault();

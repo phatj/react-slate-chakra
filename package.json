@@ -7,7 +7,9 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "postinstall": "pnpm theme",
-    "theme": "chakra-cli tokens ./src/theme.ts"
+    "theme": "chakra-cli tokens ./src/theme.ts",
+    "lint": "eslint src/. --ext .ts,.tsx --fix",
+    "lint:prettier": "prettier -w ."
   },
   "dependencies": {
     "@chakra-ui/cli": "^2.3.0",
