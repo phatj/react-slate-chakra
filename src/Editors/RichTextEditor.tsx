@@ -1,19 +1,19 @@
 // @ts-nocheck
 
-import { useCallback, useMemo } from 'react';
 import isHotkey from 'is-hotkey';
-import { Editable, withReact, useSlate, Slate } from 'slate-react';
+import { useCallback, useMemo } from 'react';
 import {
-  Editor,
-  Transforms,
+  BaseEditor,
   createEditor,
   Descendant,
+  Editor,
   Element as SlateElement,
-  BaseEditor,
+  Transforms,
 } from 'slate';
 import { withHistory } from 'slate-history';
-
-import { Button, Icon, Toolbar } from '../components';
+import { Editable, Slate, useSlate, withReact } from 'slate-react';
+import { Button, ButtonGroup } from '@chakra-ui/react';
+import { Icon } from '../components';
 
 const HOTKEYS = {
   'mod+b': 'bold',
@@ -32,7 +32,7 @@ export const RichTextEditor = () => {
 
   return (
     <Slate editor={editor} value={initialValue}>
-      <Toolbar>
+      <ButtonGroup>
         <MarkButton format="bold" icon="format_bold" />
         <MarkButton format="italic" icon="format_italic" />
         <MarkButton format="underline" icon="format_underlined" />
@@ -42,7 +42,7 @@ export const RichTextEditor = () => {
         <BlockButton format="block-quote" icon="format_quote" />
         <BlockButton format="numbered-list" icon="format_list_numbered" />
         <BlockButton format="bulleted-list" icon="format_list_bulleted" />
-      </Toolbar>
+      </ButtonGroup>
       <Editable
         renderElement={renderElement}
         renderLeaf={renderLeaf}
