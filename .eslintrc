@@ -1,0 +1,36 @@
+{
+  "env": {
+    "node": true,
+    "es6": true
+  },
+  "root": true,
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module"
+  },
+  "plugins": ["@typescript-eslint/eslint-plugin"],
+  "extends": [
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "rules": {
+    "@typescript-eslint/ban-ts-comment": [1, {
+      "ts-ignore": "allow-with-description"
+    }],
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/no-empty-interface": "off",
+    "@typescript-eslint/no-explicit-any": "off",
+    "@typescript-eslint/prefer-namespace-keyword": "off",
+    "no-prototype-builtins": "off",
+    "no-useless-escape": "off",
+    "object-curly-spacing": ["warn", "always"],
+    "prettier/prettier": "warn",
+    "quotes": ["warn", "single", {
+      "avoidEscape": true
+    }],
+    "require-atomic-updates": "off",
+    "semi": ["warn", "always"]
+  }
+}
