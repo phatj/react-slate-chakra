@@ -1,7 +1,7 @@
-import { BaseEditor, Editor, Element, Transforms } from 'slate';
+import { Editor, Element, Transforms } from 'slate';
 import { ElementTypes, ListTypes } from './types';
 
-export const toggleBlock = (editor: BaseEditor, format: ElementTypes) => {
+export const toggleBlock = (editor: Editor, format: ElementTypes) => {
   const isActive = isBlockActive(editor, format);
   const isList = ListTypes.includes(format);
 

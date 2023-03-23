@@ -1,6 +1,6 @@
 import { ButtonGroup } from '@chakra-ui/react';
 import isHotkey from 'is-hotkey';
-import { useCallback, useMemo } from 'react';
+import { FC, useCallback, useMemo } from 'react';
 import { createEditor, Descendant } from 'slate';
 import { withHistory } from 'slate-history';
 import { Editable, Slate, withReact } from 'slate-react';
@@ -8,7 +8,7 @@ import { BlockButton } from './BlockButton';
 import { Element, ElementProps } from './Element';
 import { Leaf, LeafProps } from './Leaf';
 import { MarkButton } from './MarkButton';
-import { toggleMark } from './utils';
+import { serialize, toggleMark } from './utils';
 
 const HotKeys = {
   'mod+b': 'bold',
@@ -17,7 +17,17 @@ const HotKeys = {
   'mod+`': 'code',
 } as const;
 
-export const RichTextEditor = () => {
+// initial value cannot be empty
+const initialValue: Descendant[] = [
+  {
+    type: 'paragraph',
+    children: [
+      { text: '' },
+    ],
+  },
+];
+
+export const RichTextEditor: FC = () => {
   const renderElement = useCallback(
     (props: ElementProps) => <Element {...props} />,
     [],
@@ -26,7 +36,13 @@ export const RichTextEditor = () => {
   const editor = useMemo(() => withHistory(withReact(createEditor())), []);
 
   return (
-    <Slate editor={editor} value={initialValue}>
+    <Slate
+      editor={editor}
+      value={initialValue}
+      onChange={(value) => {
+        console.log(value.map(serialize).join(''));
+      }}
+    >
       <ButtonGroup>
         <MarkButton format="bold" icon="format_bold" />
         <MarkButton format="italic" icon="format_italic" />
@@ -58,37 +74,4 @@ export const RichTextEditor = () => {
   );
 };
 
-const initialValue: Descendant[] = [
-  {
-    type: 'paragraph',
-    children: [
-      { text: 'This is editable ' },
-      { text: 'rich', bold: true },
-      { text: ' text, ' },
-      { text: 'much', italic: true },
-      { text: ' better than a ' },
-      { text: '<textarea>', code: true },
-      { text: '!' },
-    ],
-  },
-  {
-    type: 'paragraph',
-    children: [
-      {
-        text: "Since it's rich text, you can do things like turn a selection of text ",
-      },
-      { text: 'bold', bold: true },
-      {
-        text: ', or add a semantically rendered block quote in the middle of the page, like this:',
-      },
-    ],
-  },
-  {
-    type: 'block-quote',
-    children: [{ text: 'A wise quote.' }],
-  },
-  {
-    type: 'paragraph',
-    children: [{ text: 'Try it out for yourself!' }],
-  },
-];
+

@@ -1,8 +1,7 @@
 import { Button, Icon } from '@chakra-ui/react';
 import { FC } from 'react';
 import { useSlate } from 'slate-react';
-import { IconKeys, IconMap, isMarkActive, toggleMark } from './utils';
-import { TextFormats } from './utils/types';
+import { IconKeys, IconMap, isMarkActive, TextFormats, toggleMark } from './utils';
 
 type MarkButtonProps = {
   format: TextFormats;

@@ -1,8 +1,13 @@
+import { BaseEditor, BaseText } from 'slate';
+import { HistoryEditor } from 'slate-history';
+import { ReactEditor } from 'slate-react';
+
 export const ElementTypes = [
   'block-quote',
   'bulleted-list',
   'heading-one',
   'heading-two',
+  'link',
   'list-item',
   'numbered-list',
   'paragraph',
@@ -14,12 +19,13 @@ export type TextFormats = (typeof TextFormats)[number];
 
 export const ListTypes = ['numbered-list', 'bulleted-list'];
 
-type TextFormatMap = Partial<Record<TextFormats, boolean>>;
+type CustomText = BaseText & Partial<Record<TextFormats, boolean>>;
+type CustomElement = { type: ElementTypes; children: CustomText[] };
 
 declare module 'slate' {
-  interface BaseElement {
-    type: ElementTypes;
+  interface CustomTypes {
+    Editor: BaseEditor & ReactEditor & HistoryEditor;
+    Element: CustomElement;
+    Text: CustomText;
   }
-
-  interface BaseText extends TextFormatMap {}
 }

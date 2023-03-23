@@ -18,6 +18,7 @@ const ElementTypeMap: Record<ElementTypes, keyof JSX.IntrinsicElements> = {
   'heading-two': 'h2',
   'list-item': 'li',
   'numbered-list': 'ol',
+  link: 'a',
   paragraph: 'p',
 };
 
